@@ -2,6 +2,8 @@ import express from "express"
 import dotenv from "dotenv"
 import cors from "cors"
 import pool from './config/db.js';
+import { errorHandler } from "./middlewares/errorHandler.js";
+import authRoutes from "./routes/authRoutes.js"
 
 dotenv.config()
 
@@ -9,6 +11,10 @@ const app = express()
 //middlewares
 app.use(express.json())
 app.use(cors())
+app.use(errorHandler)
+
+// Routes
+app.use("/api/", authRoutes)
 
 // Test the db connection
 async function testDatabaseConnection() {
