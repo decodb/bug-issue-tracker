@@ -15,6 +15,7 @@ export const authMiddleware = (req, res, next) => {
     try {
         const decodedToken = jwt.verify(token, process.env.JWT_SECRET_TOKEN)
         req.userInfo = decodedToken
+        console.log(decodedToken)
         next()
     } catch(error) {
         return unathorizedResponse(req, res, 'Access denied. Please log in. ')
