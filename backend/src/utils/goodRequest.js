@@ -1,7 +1,7 @@
-export const goodRequest = (req, res, user) => {
+export const goodRequest = (req, res, message, user) => {
     res.status(201).json({
         success: true,
-        message: "User registered successfully",
+        message,
         user 
     })
 }
