@@ -4,6 +4,7 @@ import cors from "cors"
 import pool from './config/db.js';
 import { errorHandler } from "./middlewares/errorHandler.js";
 import authRoutes from "./routes/authRoutes.js"
+import adminRoutes from "./routes/adminRoutes.js"
 
 dotenv.config()
 
@@ -15,6 +16,7 @@ app.use(errorHandler)
 
 // Routes
 app.use("/api/", authRoutes)
+app.use("/api/admin/", adminRoutes)
 
 // Test the db connection
 async function testDatabaseConnection() {
