@@ -1,12 +1,11 @@
 import { getUser, insertUser } from "../models/usersModel.js";
-import { badRequest } from "../utils/badRequest.js";
-import { conflictRequest } from "../utils/conflict.js";
+import { badRequest } from "../utils/4xx/errorResponse.js";
+import { conflictRequest } from "../utils/4xx/conflictResponse.js";
 import bcrypt from "bcrypt"
-import { goodRequest } from "../utils/goodRequest.js";
-import { notFound } from "../utils/notFound.js";
-import { unathorizedResponse } from "../utils/unauthorizedRequest.js";
+import { goodRequest } from "../utils/2xx/createdResponse.js";
+import { notFound } from "../utils/4xx/notFound.js";
+import { unathorizedResponse } from "../utils/4xx/unauthorizedResponse.js";
 import jwt from "jsonwebtoken"
-import { json } from "express";
 
 // Register User
 export const registerUser = async (req, res, next) => {
@@ -18,7 +17,7 @@ export const registerUser = async (req, res, next) => {
         // check if the user with the email already exists
         const existingUser = await getUser(email);
 
-        if (existingUser) return conflictRequest(req, res);
+        if (existingUser) return conflictRequest(req, res, 'User already exists. Try logging in.');
 
         //hash user password
         const salt = await bcrypt.genSalt(10);

@@ -1,5 +1,5 @@
 
-import { unathorizedResponse } from "../utils/unauthorizedRequest.js";
+import { unathorizedResponse } from "../utils/4xx/unauthorizedResponse.js";
 import jwt from "jsonwebtoken"
 
 export const authMiddleware = (req, res, next) => {
