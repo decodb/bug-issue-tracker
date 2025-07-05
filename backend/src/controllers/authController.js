@@ -63,7 +63,7 @@ export const userLogin = async (req, res, next) => {
             role: user.role,
             managerId: user.manager_id
         }, process.env.JWT_SECRET_TOKEN,{
-            expiresIn: '15m'
+            expiresIn: '1hr'
         })
 
         res.status(201).json({

@@ -1,7 +1,7 @@
-export const greatRequest = (req, res, message, user) => {
+export const greatRequest = (req, res, message, data) => {
     res.status(200).json({
         success: true,
         message,
-        user 
+        data 
     })
 }

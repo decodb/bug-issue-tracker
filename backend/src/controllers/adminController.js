@@ -1,4 +1,4 @@
-import { deleteEmployeeById, getAllEmployees, getEmployeeById } from "../models/adminModel.js";
+import { addProject, deleteEmployeeById, getAllEmployees, getAllProjects, getEmployeeById, getProjectById, updateProjectById } from "../models/adminModel.js";
 import { getUser, insertUser } from "../models/usersModel.js";
 import { badRequest } from "../utils/4xx/errorResponse.js";
 import { conflictRequest } from "../utils/4xx/conflictResponse.js";
@@ -70,6 +70,66 @@ export const addEmployee = async (req, res, next) => {
 
         if (!newEmployee) return 
     } catch (error) {
+        next(error)
+    }
+}
+
+export const addNewProject = async(req, res, next) => {
+    const { userId } = req.userInfo;
+    const { name, description } = req.body;
+
+    try {
+        const newProject = await addProject(name, description, userId)
+
+        if (!newProject) return badRequest(req, res, "Failure adding a new project. Try again");
+
+        greatRequest(req, res, "Project added successfully. ", newProject)
+
+    } catch (error) {
+        next(error)
+    }
+}
+
+export const getProjects = async(req, res) => {
+    const { userId } = req.userInfo;
+
+    try {
+        const projects = await getAllProjects(userId);
+
+        if (!projects) return notFound(req, res, "You don't have any projects. ");
+
+        greatRequest(req, res, "Projects successfully found. ", projects);
+    } catch (error) {
+        next(error)
+    }
+}
+
+export const getProject = async(req, res, next) => {
+    const id = req.params.id;
+
+    try {
+        const project = await getProjectById(Number(id))
+
+        if (!project) return notFound(req, res, "No project found. ");
+
+        greatRequest(req, res, "A project successfully found. ", project)
+    } catch(error) {
+        next(error)
+    }
+}
+
+export const updateProject = async(req, res, next) => {
+    const id = req.params.id;
+    const { name, description } = req.body;
+
+    try {
+        const updatedProject = await updateProjectById(Number(id), name, description);
+
+        if (!updatedProject) return badRequest(req, res, "Failure updating the project. Please try again. ");
+
+        greatRequest(req, res, "Project successfully updated. ", updatedProject)
+
+    } catch(error) {
         next(error)
     }
 }

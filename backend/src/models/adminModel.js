@@ -36,3 +36,49 @@ export const deleteEmployeeById = async(userId) => {
 
     return result.rows[0]
 }
+
+// Projects models
+export const addProject = async(name, description, managerId) => {
+    const result = await pool.query(
+        `
+            INSERT INTO projects(name, description, user_id)
+            VALUES($1, $2, $3) RETURNING *
+        `, [name, description, managerId]
+    )
+
+    return result.rows[0]
+}
+
+export const getAllProjects = async (managerId) => {
+    const result = await pool.query(
+        `
+            SELECT * FROM projects
+            WHERE user_id=$1
+        `, [managerId]
+    )
+
+    return result.rows;
+}
+
+export const getProjectById = async(id) => {
+    const result = await pool.query(
+        `
+            SELECT * FROM projects
+            WHERE id=$1
+        `, [id]
+    )
+
+    return result.rows[0]
+}
+
+export const updateProjectById = async(id, name, description) => {
+    const result = await pool.query(
+        `
+            UPDATE projects
+            SET name=$1, description=$2
+            WHERE id=$3 RETURNING *
+        `,[name, description, id]
+    )
+
+    return result.rows[0]
+}
