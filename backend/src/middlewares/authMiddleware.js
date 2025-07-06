@@ -1,5 +1,5 @@
 
-import { unathorizedResponse } from "../utils/4xx/unauthorizedResponse.js";
+import { sendUnathorizedResponse } from "../utils/4xx/unauthorizedResponse.js";
 import jwt from "jsonwebtoken"
 
 export const authMiddleware = (req, res, next) => {
@@ -8,7 +8,7 @@ export const authMiddleware = (req, res, next) => {
     const token = authHeaders && authHeaders.split(" ")[1]
 
     if (!token) {
-        return unathorizedResponse(req, res, 'Access denied. Please log in.')
+        return sendUnathorizedResponse(req, res, 'Access denied. Please log in.')
     }
 
     // decode the token
@@ -18,6 +18,6 @@ export const authMiddleware = (req, res, next) => {
         console.log(decodedToken)
         next()
     } catch(error) {
-        return unathorizedResponse(req, res, 'Access denied. Please log in. ')
+        return sendUnathorizedResponse(req, res, 'Access denied. Please log in. ')
     }
 }

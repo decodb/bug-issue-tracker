@@ -1,10 +1,10 @@
 import { getUser, insertUser } from "../models/usersModel.js";
-import { badRequest } from "../utils/4xx/errorResponse.js";
-import { conflictRequest } from "../utils/4xx/conflictResponse.js";
+import { sendBadRequest } from "../utils/4xx/errorResponse.js";
+import { sendConflictResponse } from "../utils/4xx/conflictResponse.js";
 import bcrypt from "bcrypt"
-import { goodRequest } from "../utils/2xx/createdResponse.js";
-import { notFound } from "../utils/4xx/notFound.js";
-import { unathorizedResponse } from "../utils/4xx/unauthorizedResponse.js";
+import { sendGoodRequest } from "../utils/2xx/createdResponse.js";
+import { sendNotFound } from "../utils/4xx/notFound.js";
+import { sendUnathorizedResponse } from "../utils/4xx/unauthorizedResponse.js";
 import jwt from "jsonwebtoken"
 
 // Register User
@@ -17,7 +17,7 @@ export const registerUser = async (req, res, next) => {
         // check if the user with the email already exists
         const existingUser = await getUser(email);
 
-        if (existingUser) return conflictRequest(req, res, 'User already exists. Try logging in.');
+        if (existingUser) return sendConflictResponse(req, res, 'User already exists. Try logging in.');
 
         //hash user password
         const salt = await bcrypt.genSalt(10);
@@ -27,10 +27,10 @@ export const registerUser = async (req, res, next) => {
         const newlyRegisteredUser = await insertUser(name, surname, email, hashedPassowrd, role, manager_id)
 
         if (!newlyRegisteredUser) {
-            badRequest('Unable to register the user. Please try again.')
+            sendBadRequest('Unable to register the user. Please try again.')
         }
 
-        goodRequest(req, res, 'User successfully created. ', newlyRegisteredUser)
+        sendGoodRequest(req, res, 'User successfully created. ', newlyRegisteredUser)
 
     } catch (err) {
         next(err)
@@ -47,12 +47,12 @@ export const userLogin = async (req, res, next) => {
         // check if user with the entered email does exist
         const user = await getUser(email);
 
-        if (!user) return notFound(req, res, 'User with this email does not exist. ');
+        if (!user) return sendNotFound(req, res, 'User with this email does not exist. ');
 
         // check if the passwords match
         const passwordsMatch = await bcrypt.compare(password, user.password_hash)
 
-        if (!passwordsMatch) return unathorizedResponse(req, res, 'Invalid credentials. ');
+        if (!passwordsMatch) return sendUnathorizedResponse(req, res, 'Invalid credentials. ');
 
         // create a token
         const accessToken = jwt.sign({
