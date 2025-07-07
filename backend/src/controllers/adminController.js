@@ -1,4 +1,4 @@
-import { addEmployeeByIdToProject, addProject, deleteEmployeeById, deleteProjectById, getAllEmployees, getAllProjects, getEmployeeByForProjectById, getEmployeeById, getProjectById, updateProjectById } from "../models/adminModel.js";
+import { addEmployeeByIdToProject, addProject, createProjectIssue, deleteEmployeeById, deleteProjectById, getAllEmployees, getAllIssues, getAllProjects, getEmployeeByForProjectById, getEmployeeById, getProjectById, updateProjectById, updateProjectByIdIssue } from "../models/adminModel.js";
 import { getUser, insertUser } from "../models/usersModel.js";
 import { sendBadRequest } from "../utils/4xx/errorResponse.js";
 import { sendConflictResponse } from "../utils/4xx/conflictResponse.js";
@@ -151,4 +151,43 @@ export const addEmployeeToProject = async(req, res, next) => {
     } catch (error) {
         next(error)
     }
+}
+
+// Issues
+export const createNewProjectIssue = async(req, res, next) => {
+    const { title, description, priority } = req.body;
+    const projectId = req.params.pId;
+    const { userId, name, surname, email, role } = req.userInfo
+
+    try {
+        const newIssue = await createProjectIssue(title, description, priority, userId, projectId);
+        if (!newIssue) return sendBadRequest(req, res, 'Error creating an issue. Please try again. ');
+
+        sendOk(req, res, 'An issue succesfully created. ', newIssue)
+    } catch(error) {
+        next(error)
+    }
+}
+
+export const updateProjectIssue = async(req, res, next) => {
+    const id = req.params.id;
+    const { title, description, priority, assigned_to } = req.body;
+
+    try {
+        const updatedIssue = await updateProjectByIdIssue(id, title, description, priority, assigned_to);
+        if (!updatedIssue) return sendBadRequest(req, res, "Failure updating the issue. Please try again. ");
+
+        sendOk(req, res, "An issue successfully updated. ", updatedIssue)
+    } catch(error) {
+        next(error);
+    }
+}
+
+export const getIssues = async(req, res, next) => {
+    const { userId } = req.userInfo;
+
+    const issues = await getAllIssues(userId);
+    if (!issues) return sendBadRequest(req, res, "Failure fetching your issues. ");
+
+    sendOk(req, res, "Issues succesffuly fetched. ", issues)
 }

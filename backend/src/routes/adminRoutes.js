@@ -1,7 +1,8 @@
 import express from "express"
-import { addEmployee, addEmployeeToProject, addNewProject, deleteEmployee, deleteProject, getEmployee, getEmployees, getOverview, getProject, getProjects, updateProject } from "../controllers/adminController.js"
+import { addEmployee, addEmployeeToProject, addNewProject, createNewProjectIssue, deleteEmployee, deleteProject, getEmployee, getEmployees, getIssues, getOverview, getProject, getProjects, updateProject, updateProjectIssue } from "../controllers/adminController.js"
 import { authMiddleware } from "../middlewares/authMiddleware.js"
 import { isAdmin } from "../middlewares/adminMiddleware.js"
+import { getAllIssues } from "../models/adminModel.js"
 
 const router = express.Router()
 
@@ -24,7 +25,8 @@ router.delete("/deleteProject/:id", authMiddleware, isAdmin, deleteProject)
 router.post("/project/:pId/employee/:eId", authMiddleware, isAdmin, addEmployeeToProject)
 
 // Issues endpoints
-router.post("/project/:pId/createIssue", authMiddleware, isAdmin, )
-//router.put("/issue/:id/", )
+router.post("/project/:pId/createIssue", authMiddleware, isAdmin, createNewProjectIssue)
+router.put("/update/issue/:id/", authMiddleware, isAdmin, updateProjectIssue)
+router.get("/issues", authMiddleware, isAdmin, getIssues)
 
 export default router

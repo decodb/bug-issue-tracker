@@ -115,3 +115,48 @@ export const getEmployeeByForProjectById = async(pId, eId) => {
 
     return result.rows
 }
+
+// Issues endpoints
+export const createProjectIssue = async(name, description, priority, eId, pId) => {
+    const result = await pool.query(
+        `
+            INSERT INTO issues(title, description, priority, created_by, project_id)
+            VALUES($1, $2, $3, $4, $5) RETURNING *
+        `, [name, description, priority, eId, pId]
+    )
+
+    return result.rows[0]
+}
+
+export const updateProjectByIdIssue = async(issueId, title, description, priority, assigned_to) => {
+    const result = await pool.query(
+        `
+            UPDATE issues
+            SET title=$1, description=$2, priority=$3, assigned_to=$4
+            WHERE id=$5 RETURNING * 
+        `, [title, description, priority, assigned_to, issueId]
+    )
+
+    return result.rows[0]
+}
+
+export const getAllIssues = async(managerId) => {
+    const result = await pool.query(
+        `
+            SELECT 
+                i.title AS issueTitle,
+                i.description AS issueDescription,
+                i.priority AS issuePriority,
+                u.name AS assignedToName,
+                u.surname AS assignedToSurname,
+                p.name AS issueProjectName
+            FROM issues i
+            JOIN users u
+                ON i.assigned_to = u.id AND u.manager_id =$1
+            JOIN projects p
+                ON i.project_id = p.id;       
+        `, [managerId]
+    )
+
+    return result.rows;
+}
