@@ -15,7 +15,7 @@ app.use(express.json())
 app.use(cors())
 app.use(errorHandler)
 app.use(express.urlencoded({ extended: true }))
-//app.use(bodyParser.json())
+app.use(bodyParser.json())
 
 // Routes
 app.use("/api/", authRoutes)
