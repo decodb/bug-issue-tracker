@@ -1,0 +1,131 @@
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    height: 100vh;
+}
+
+.left {
+    background-color: aquamarine;
+}
+
+.right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.1rem;
+}
+
+.header ion-icon {
+    font-size: 5rem;
+    color: aquamarine;
+}
+
+.header h2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-weight: 600;
+}
+
+.header h2 span {
+    margin-top: -0.25rem;
+    font-size: 1rem;
+    color: #969696;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+form .names {
+    display: flex;
+    gap: 1.25rem;
+}
+
+form .names .input_field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+form .names .input_field label,
+form .input_field label {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+form .names .input_field input,
+form .input_field input {
+    padding: 0.75rem 1rem;
+    border: 1.25px solid #969696;
+    border-radius: 7.5px;
+    width: 100%;
+    transition: box-shadow 0.3s ease, border-color 0.3s ease, border-width 0.3s ease;
+}
+
+form .names .input_field input:focus,
+form .input_field input:focus {
+    box-shadow: none;
+    outline: none;
+    border-color: black;
+    border-width: 2px;
+}
+
+form .names .input_field input:hover,
+form .input_field input:hover {
+    box-shadow: 0 0 15px aquamarine;
+}
+
+form .input_field .input {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1.25px solid #969696;
+    border-radius: 7.5px;
+    padding-right: 0.5rem;
+    transition: box-shadow 0.3s ease, border-color 0.3s ease, border-width 0.3s ease;
+}
+
+form .input_field .input input {
+    border: none;
+    outline: none;
+    width: 100%;
+}
+
+.input_field .input input:hover,
+.input_field .input input:focus,
+.input_field .input input:active {
+    box-shadow: none;
+    outline: none;
+    border-color: aquamarine;
+}
+
+.input_field .input:hover {
+    box-shadow: 0 0 15px aquamarine;
+}
+
+.input_field .input:has(input:focus) {
+    border-color: black;
+    border-width: 2px;
+}
+
+.btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.75rem 1rem;
+}
+
+.login-text a {
+    color: aquamarine;
+}
