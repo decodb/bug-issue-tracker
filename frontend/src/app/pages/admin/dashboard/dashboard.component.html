@@ -1,2 +1,60 @@
-<p>{{ currentUser.name }}</p>
-<router-outlet/>
+<section>
+    <div class="sidebar">
+        <aside>
+            <div class="header">
+                <ion-icon name="logo-sass" class="logo"></ion-icon>
+            </div>
+            <div class="links">
+                <div class="top">
+                    <a routerLink="/admin/overview">
+                        <div class="left">
+                            <ion-icon name="clipboard-outline"></ion-icon>
+                            <span>Overview</span>
+                        </div>
+                        <div class="right"></div>
+                    </a>
+                    <a routerLink="/admin/employees" >
+                        <div class="left">
+                            <ion-icon name="people-outline"></ion-icon>
+                            <span>Developers</span>
+                        </div>
+                        <div class="right"></div>
+                    </a>
+                    <a routerLink="" >
+                        <div class="left">
+                            <ion-icon name="file-tray-stacked-outline"></ion-icon>
+                            <span>Projects</span>
+                        </div>
+                        <div class="right"></div>
+                    </a>
+                    <a routerLink="" >
+                        <div class="left">
+                            <ion-icon name="easel-outline"></ion-icon>
+                            <span>Issues</span>
+                        </div>
+                        <div class="right"></div>
+                    </a>
+                </div>
+                <div class="bottom">
+                    <a routerLink="" >
+                        <div class="left">
+                            <ion-icon name="settings-outline"></ion-icon>
+                            <span>Settings</span>
+                        </div>
+                        <div class="right"></div>
+                    </a>
+                </div>
+            </div>
+        </aside>
+    </div>
+    <main>
+        <div class="header">
+            <div class="search-bar">
+                <ion-icon name="search-outline"></ion-icon>
+                <input id="search" type="text" placeholder="search here">
+            </div>
+            <div class="user"></div>
+        </div>
+        <router-outlet/>
+    </main>
+</section>

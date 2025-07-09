@@ -53,7 +53,7 @@ export class SignInComponent {
           }, 1000)
 
           setTimeout(()=> {
-            this.router.navigate(["/"])
+            this.router.navigate(["/admin/overview"])
           }, 2500)
         },
         error: (error) => {
