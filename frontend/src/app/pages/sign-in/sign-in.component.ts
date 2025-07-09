@@ -43,8 +43,8 @@ export class SignInComponent {
 
     this.authService.loginUser(userCredentials)
       .subscribe({
-        next: ({ message }) => {
-          console.log(message)
+        next: ({ message, accessToken }) => {
+          localStorage.setItem('token', accessToken)
           this.responseMessage.set(message)
           this.showMessage.set(true)
           setTimeout(()=> {

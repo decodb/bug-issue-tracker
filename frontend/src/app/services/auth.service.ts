@@ -1,6 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
+import { jwtDecode } from "jwt-decode";
 
 export interface regUser {
     name: string | null,
@@ -30,5 +31,29 @@ export class AuthService {
     loginUser(userCredentials: logUser) {
         return this.httpClient.post<any>(this.loginUrl, userCredentials)
     }
-            
+
+    isAuthenticated(): boolean {
+        return !!localStorage.getItem('token')
+    }
+    
+    getCurrentUser(): any {
+        const token = localStorage.getItem('token');
+        if(token) {
+            try {
+                return jwtDecode(token)
+            } catch (e) {
+                return null;
+            }
+        }
+
+        return null;
+    }
+
+    getJwtToken = (): string | null => {
+        let token: any = localStorage.getItem('tokem');
+        if (!token) {
+            return null;
+        }
+        return token;
+    }   
 }
