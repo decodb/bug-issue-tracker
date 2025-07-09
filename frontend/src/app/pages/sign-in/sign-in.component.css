@@ -1,0 +1,129 @@
+section {
+    display: grid;
+    grid-template-columns: 1fr 1.25fr;
+    height: 100vh;
+    position: relative;
+}
+
+.message {
+    background-color: rgb(160, 252, 221);
+    padding: 0.5rem 1rem;
+    position: absolute;
+    top: 10px;
+    left: -1000px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid rgb(20, 204, 143);
+    border-radius: 7.5px;
+    width: 18rem;
+    transition: all 0.2s ease-in-out;
+}
+
+.message.showMessage {
+    left: 10px;
+}
+
+.error {
+    color: red;
+    font-size: 14px;
+    padding-left: 5px;
+}
+
+section .right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    text-align: center;
+
+}
+
+section .right .header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 22.5rem;
+}
+
+section .right .header p {
+    color: #969696;
+    font-size: 0.85rem;
+}
+
+section .right form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 22.5rem;
+}
+
+section .right form .field {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+section .right form .field label {
+    font-size: 0.85rem;
+    font-weight: 400;
+}
+
+section .right form .field input {
+    padding: 0.75rem 1rem;
+    border: 1.25px solid #969696;
+    border-radius: 7.5px;
+    width: 100%;
+    transition: box-shadow 0.3s ease, border-color 0.3s ease, border-width 0.3s ease;
+    width: 100%;
+}
+
+section .right form .field input:hover {
+    box-shadow: 0 0 15px aquamarine;
+}
+
+section .right form .field a {
+    text-align: right;
+}
+
+.btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.75rem 1rem;
+}
+
+.password-text {
+    font-size: 0.85rem;
+}
+
+.register-text {
+    color: aquamarine;
+}
+
+.loader {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 2px solid white;
+  border-top: 2px solid transparent;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  vertical-align: middle;
+}
+
+.hidden {
+  display: none;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.left {
+    background-color: aquamarine;
+}

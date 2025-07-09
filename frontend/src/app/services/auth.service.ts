@@ -10,9 +10,9 @@ export interface regUser {
     role: string
 }
 
-interface logUser {
-    email: string,
-    password: string
+export interface logUser {
+    email: string | null,
+    password: string | null
 }
 
 @Injectable({providedIn: "root"})

@@ -84,9 +84,9 @@ export class SignUpComponent {
             this.isLoading.set(false);
           }, 1000)
 
-          setTimeout(()=> {
-            this.router.navigate(["/sign-in"])
-          }, 2500)
+          /*setTimeout(()=> {
+            this.router.navigate(["/"])
+          }, 2500)*/
         },
         error: (error) => {
           const message = error.error?.message || "An unexpected error occurred.";
