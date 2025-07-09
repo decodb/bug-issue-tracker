@@ -17,7 +17,7 @@ export const registerUser = async (req, res, next) => {
         // check if the user with the email already exists
         const existingUser = await getUser(email);
 
-        if (existingUser) return sendConflictResponse(req, res, 'User already exists. Try logging in.');
+        if (existingUser) return sendConflictResponse(req, res, 'This email already exists. Try logging in.');
 
         //hash user password
         const salt = await bcrypt.genSalt(10);
@@ -30,7 +30,7 @@ export const registerUser = async (req, res, next) => {
             sendBadRequest('Unable to register the user. Please try again.')
         }
 
-        sendGoodRequest(req, res, 'User successfully created. ', newlyRegisteredUser)
+        sendGoodRequest(req, res, "You've successfully signed up. ", newlyRegisteredUser)
 
     } catch (err) {
         next(err)

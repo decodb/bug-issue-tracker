@@ -2,6 +2,32 @@
     display: grid;
     grid-template-columns: 1fr 1.5fr;
     height: 100vh;
+    position: relative;
+}
+
+.message {
+    background-color: rgb(160, 252, 221);
+    padding: 0.5rem 1rem;
+    position: absolute;
+    top: -1000px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    right: 10px;
+    border: 2px solid rgb(20, 204, 143);
+    border-radius: 7.5px;
+    width: 18rem;
+    transition: all 0.2s ease-in-out;
+}
+
+.message.showMessage {
+    top: 10px;
+}
+
+.error {
+    color: red;
+    font-size: 14px;
+    padding-left: 5px;
 }
 
 .left {
@@ -128,4 +154,25 @@ form .input_field .input input {
 
 .login-text a {
     color: aquamarine;
+}
+
+.loader {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 2px solid white;
+  border-top: 2px solid transparent;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  vertical-align: middle;
+}
+
+.hidden {
+  display: none;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
 }
