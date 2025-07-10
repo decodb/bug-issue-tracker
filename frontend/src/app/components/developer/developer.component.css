@@ -1,0 +1,27 @@
+.card {
+    background-color: var(--background-grey);
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid var(--color-grey);
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card .left {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.card .left h3 {
+    font-weight: 400;
+    font-size:medium;
+}
+
+.card .left h3 span,
+.card .left span {
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: var(--color-slate-grey);
+}

@@ -8,12 +8,19 @@ section aside {
     background-color: var(--background-grey);
     height: 100vh;
     border-right: 1px solid var(--color-grey);
+    position: sticky;
+    top: 0;
+    left: 0;
 }
 
 section aside .header {
     display: flex;
     border-bottom: 1px solid var(--color-grey);
     padding: 0.5rem 1.5rem;
+}
+
+section aside .header ion-icon {
+    color: aquamarine;
 }
 
 section aside .header ion-icon {
@@ -79,6 +86,7 @@ section aside .links .bottom a:hover .right {
 
 section main .header {
     display: flex;
+    justify-content: space-between;
     border-bottom: 1px solid var(--color-grey);
     padding: 0.5rem 1.5rem;
 }
@@ -102,4 +110,17 @@ section main .header .search-bar input {
 section main .header .search-bar input:focus {
     border: none;  
     outline: none; 
+}
+
+section main .header .user {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+}
+
+section main .header .user:hover {
+    background-color: var(--background-grey);
 }

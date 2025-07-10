@@ -1,1 +1,146 @@
-<p>employees works!</p>
+<section>
+    <div class="header">
+        <h3>Hello {{ currentUser.name }} {{ currentUser.surname }}</h3>
+        <p>Manage your developers here. </p>
+    </div>
+    <div class="body">
+        <div class="main">
+            <div class="body_header">
+                <h4>Employees</h4>
+                <div class="buttons">
+                    <button class="btn sort_btn"><ion-icon name="funnel-outline"></ion-icon><span>Sort by</span></button>
+                    <a routerLink="" class="btn">+ Employee</a>
+                </div>
+            </div>
+            <div class="developers">
+                @if (isLoading()) {
+                    <div [class.skeleton]="isLoading()" [class.hidden]="!isLoading()">
+                        <div style="display: flex; align-items: center; gap: 1rem;">
+                            <div class="skeleton skeleton-avatar"></div>
+                            <div style="flex: 1;">
+                                <div class="skeleton skeleton-title"></div>
+                                <div class="skeleton skeleton-line"></div>
+                                <div class="skeleton skeleton-line" style="width: 80%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div [class.skeleton]="isLoading()" [class.hidden]="!isLoading()">
+                        <div style="display: flex; align-items: center; gap: 1rem;">
+                            <div class="skeleton skeleton-avatar"></div>
+                            <div style="flex: 1;">
+                                <div class="skeleton skeleton-title"></div>
+                                <div class="skeleton skeleton-line"></div>
+                                <div class="skeleton skeleton-line" style="width: 80%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div [class.skeleton]="isLoading()" [class.hidden]="!isLoading()">
+                        <div style="display: flex; align-items: center; gap: 1rem;">
+                            <div class="skeleton skeleton-avatar"></div>
+                            <div style="flex: 1;">
+                                <div class="skeleton skeleton-title"></div>
+                                <div class="skeleton skeleton-line"></div>
+                                <div class="skeleton skeleton-line" style="width: 80%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div [class.skeleton]="isLoading()" [class.hidden]="!isLoading()">
+                        <div style="display: flex; align-items: center; gap: 1rem;">
+                            <div class="skeleton skeleton-avatar"></div>
+                            <div style="flex: 1;">
+                                <div class="skeleton skeleton-title"></div>
+                                <div class="skeleton skeleton-line"></div>
+                                <div class="skeleton skeleton-line" style="width: 80%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div [class.skeleton]="isLoading()" [class.hidden]="!isLoading()">
+                        <div style="display: flex; align-items: center; gap: 1rem;">
+                            <div class="skeleton skeleton-avatar"></div>
+                            <div style="flex: 1;">
+                                <div class="skeleton skeleton-title"></div>
+                                <div class="skeleton skeleton-line"></div>
+                                <div class="skeleton skeleton-line" style="width: 80%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div [class.skeleton]="isLoading()" [class.hidden]="!isLoading()">
+                        <div style="display: flex; align-items: center; gap: 1rem;">
+                            <div class="skeleton skeleton-avatar"></div>
+                            <div style="flex: 1;">
+                                <div class="skeleton skeleton-title"></div>
+                                <div class="skeleton skeleton-line"></div>
+                                <div class="skeleton skeleton-line" style="width: 80%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div [class.skeleton]="isLoading()" [class.hidden]="!isLoading()">
+                        <div style="display: flex; align-items: center; gap: 1rem;">
+                            <div class="skeleton skeleton-avatar"></div>
+                            <div style="flex: 1;">
+                                <div class="skeleton skeleton-title"></div>
+                                <div class="skeleton skeleton-line"></div>
+                                <div class="skeleton skeleton-line" style="width: 80%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div [class.skeleton]="isLoading()" [class.hidden]="!isLoading()">
+                        <div style="display: flex; align-items: center; gap: 1rem;">
+                            <div class="skeleton skeleton-avatar"></div>
+                            <div style="flex: 1;">
+                                <div class="skeleton skeleton-title"></div>
+                                <div class="skeleton skeleton-line"></div>
+                                <div class="skeleton skeleton-line" style="width: 80%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div [class.skeleton]="isLoading()" [class.hidden]="!isLoading()">
+                        <div style="display: flex; align-items: center; gap: 1rem;">
+                            <div class="skeleton skeleton-avatar"></div>
+                            <div style="flex: 1;">
+                                <div class="skeleton skeleton-title"></div>
+                                <div class="skeleton skeleton-line"></div>
+                                <div class="skeleton skeleton-line" style="width: 80%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div [class.skeleton]="isLoading()" [class.hidden]="!isLoading()">
+                        <div style="display: flex; align-items: center; gap: 1rem;">
+                            <div class="skeleton skeleton-avatar"></div>
+                            <div style="flex: 1;">
+                                <div class="skeleton skeleton-title"></div>
+                                <div class="skeleton skeleton-line"></div>
+                                <div class="skeleton skeleton-line" style="width: 80%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div [class.skeleton]="isLoading()" [class.hidden]="!isLoading()">
+                        <div style="display: flex; align-items: center; gap: 1rem;">
+                            <div class="skeleton skeleton-avatar"></div>
+                            <div style="flex: 1;">
+                                <div class="skeleton skeleton-title"></div>
+                                <div class="skeleton skeleton-line"></div>
+                                <div class="skeleton skeleton-line" style="width: 80%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                } @else {
+                    @for(developer of developers(); track developer.id) {
+                        <app-developer [devData]="developer" [managerName]="currentUser.name"/>
+                    }
+                }
+            </div>
+        </div>
+        <div class="aside">
+            <h3>Manage your team</h3>
+            <div class="steps">
+                <span>1. Add the employee using their email address.</span>
+                <span>2. Assign them an initial password.</span>
+                <span>3.  They can then log in to the system using their email and password.</span>
+                <span>4. The system allows them to update their information.</span>
+                <span>5. Grow together. </span>
+            </div>
+            <img src="team.png" alt="">
+        </div>
+    </div>
+</section>

@@ -50,7 +50,7 @@ export class AuthService {
     }
 
     getJwtToken = (): string | null => {
-        let token: any = localStorage.getItem('tokem');
+        let token: any = localStorage.getItem('token');
         if (!token) {
             return null;
         }
