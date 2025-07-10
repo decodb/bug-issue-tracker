@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-delete-employee',
@@ -6,6 +6,8 @@ import { Component } from '@angular/core';
   templateUrl: './delete-employee.component.html',
   styleUrl: './delete-employee.component.css'
 })
-export class DeleteEmployeeComponent {
-
+export class DeleteEmployeeComponent implements OnInit {
+  ngOnInit(): void {
+    console.log("i am getting rendered. ")
+  }
 }

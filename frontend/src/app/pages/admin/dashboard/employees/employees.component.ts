@@ -1,13 +1,12 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA, DestroyRef, inject, OnInit, signal } from '@angular/core';
 import { AuthService } from '../../../../services/auth.service';
-import { RouterLink } from '@angular/router';
-import { EmployeeComponent } from "../employee/employee.component";
+import { RouterLink, RouterOutlet } from '@angular/router';
 import { DeveloperComponent } from "../../../../components/developer/developer.component";
 import { DevelopersService } from '../../../../services/developer.service';
 
 @Component({
   selector: 'app-employees',
-  imports: [RouterLink, DeveloperComponent],
+  imports: [RouterLink, DeveloperComponent, RouterOutlet],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './employees.component.html',
   styleUrl: './employees.component.css'
@@ -24,7 +23,6 @@ export class EmployeesComponent implements OnInit {
       .subscribe({
         next: ({ data }) => {
           this.developers.set(data)
-          
           setTimeout(() => {
             this.isLoading.set(false)
           }, 1000)

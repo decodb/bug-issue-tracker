@@ -27,32 +27,29 @@ export const routes: Routes = [
     {
         path: 'admin',
         component: DashboardComponent,
-        canActivate: [authGuard, adminGuard],
+        canActivate: [authGuard, adminGuard], // Guards apply to all children
         children: [
             {
                 path: 'overview',
-                component: OverviewComponent,
-                canActivate: [authGuard, adminGuard]
+                component: OverviewComponent
             },
             {
                 path: 'employees',
                 component: EmployeesComponent,
-                canActivate: [authGuard, adminGuard]
-            },
-            {
-                path: 'employee/:id',
-                component: EmployeeComponent,
-                canActivate: [authGuard, adminGuard]
-            },
-            {
-                path: 'deleteEmployee/:id',
-                component:DeleteEmployeeComponent,
-                canActivate: [authGuard, adminGuard]
-            },
-            {
-                path: 'addEmployee',
-                component: AddEmployeeComponent,
-                canActivate: [authGuard, adminGuard]
+                children: [
+                    {
+                        path: ':id', // View single employee
+                        component: EmployeeComponent
+                    },
+                    {
+                        path: ':id/delete', // Delete employee
+                        component: DeleteEmployeeComponent
+                    },
+                    {
+                        path: 'add', // Add new employee (consistent path)
+                        component: AddEmployeeComponent
+                    }
+                ]
             }
         ]
     }

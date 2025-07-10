@@ -3,5 +3,11 @@
         <h3>{{ devData().name }} {{ devData().surname }}<span> employed by {{ managerName() }}</span></h3>
         <span>{{ devData().email }}</span>
     </div>
-    <div class="right"><ion-icon name="ellipsis-vertical"></ion-icon></div>
+    <div class="right" (click)="toggleDropdown()">
+        <ion-icon name="ellipsis-vertical"></ion-icon>
+        <div class="dropdown" [class.show]="isDropdown()">
+            <ion-icon name="remove-circle-outline"></ion-icon>
+            <a [routerLink]="['/admin/employees/', devData().id, 'delete']">Remove</a>
+        </div>
+    </div>
 </div>

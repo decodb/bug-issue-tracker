@@ -13,7 +13,7 @@ router.get("/overview", authMiddleware, isAdmin, getOverview);
 router.get("/employees", authMiddleware, isAdmin, getEmployees);
 router.get("/employee/:id", authMiddleware, isAdmin, getEmployee);
 router.delete("/deleteEmployee/:id", authMiddleware, isAdmin, deleteEmployee);
-router.post("/addEmployee", authMiddleware, isAdmin, addEmployee)
+router.post("/addEmployee", authMiddleware, isAdmin, addEmployee);
 
 // Projects endpoints
 router.post("/createProject", authMiddleware, isAdmin, addNewProject);
