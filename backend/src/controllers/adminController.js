@@ -72,10 +72,10 @@ export const addEmployee = async (req, res, next) => {
 
 export const addNewProject = async(req, res, next) => {
     const { userId } = req.userInfo;
-    const { name, description } = req.body;
+    const { name, description, status } = req.body;
 
     try {
-        const newProject = await addProject(name, description, userId)
+        const newProject = await addProject(name, description, userId, status)
         if (!newProject) return sendBadRequest(req, res, "Failure adding a new project. Try again");
 
         sendOk(req, res, "Project added successfully. ", newProject);

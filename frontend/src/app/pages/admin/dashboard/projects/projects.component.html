@@ -1,2 +1,29 @@
-<p>projects works!</p>
+<section>
+    <div class="header">
+        <div class="left">
+            <h3>Projects List</h3>
+            <span>Manage your projects from here</span>
+        </div>
+        <div class="right">
+            <a class="btn" routerLink="/admin/projects/create-project" >+ Add Project</a>
+        </div>
+    </div>
+    <div class="main">
+        <div class="headers">
+            <span>Project name <ion-icon name="arrow-down-outline"></ion-icon></span>
+            <span>Description</span>
+            <span>Status</span>
+            <span></span>
+        </div>
+        <div class="projects">
+            @if(projects.length > 0) {
+                @for(project of projects(); track project.id) {
+                    <app-project-card [data]="project"/>
+                }
+            }@else {
+                <p class="fallback">You don't have any projects. Create one.</p>
+            }
+        </div>
+    </div>
+</section>
 <router-outlet />

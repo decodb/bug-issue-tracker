@@ -38,12 +38,12 @@ export const deleteEmployeeById = async(userId) => {
 }
 
 // Projects models
-export const addProject = async(name, description, managerId) => {
+export const addProject = async(name, description, managerId, status) => {
     const result = await pool.query(
         `
-            INSERT INTO projects(name, description, user_id)
-            VALUES($1, $2, $3) RETURNING *
-        `, [name, description, managerId]
+            INSERT INTO projects(name, description, user_id, status)
+            VALUES($1, $2, $3, $4) RETURNING *
+        `, [name, description, managerId, status]
     )
 
     return result.rows[0]

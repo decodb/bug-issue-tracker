@@ -1,0 +1,51 @@
+.project {
+    display: grid;
+    grid-template-columns: 2fr 3.25fr 1fr 1fr;
+    gap: 0.25rem;
+    padding: 0.5rem 1rem;
+    background-color: var(--background-grey);
+    border-bottom: 1px solid var(--color-grey);
+}
+
+.project .name p.text {
+    font-weight: 500;
+    font-size: 1rem;
+}
+
+.project .name span {
+    color: var(--color-grey);
+    font-size: 0.85rem;
+}
+
+.project .icons {
+    display: flex;
+    align-items: flex-start;
+    gap: 2rem;
+}
+
+.project .icons a {
+    font-size: 1.25rem;
+}
+
+.project .icons a.delete {
+    color: red;
+}
+
+.project span.text_box {
+    background-color: aquamarine;
+    width: max-content;
+    height: max-content;
+    padding: 0.25rem 0.5rem;
+    border-radius: 5px;
+    font-size: 0.75rem;
+    color: rgb(74, 151, 125);
+}
+
+.project .icons a.edit {
+    color: aquamarine;
+}
+
+.text {
+    font-size: 0.9rem;
+    color: var(--color-black);
+}
