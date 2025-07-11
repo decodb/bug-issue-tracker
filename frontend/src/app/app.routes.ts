@@ -38,16 +38,16 @@ export const routes: Routes = [
                 component: EmployeesComponent,
                 children: [
                     {
+                        path: 'add', // Add new employee (consistent path)
+                        component: AddEmployeeComponent
+                    },
+                    {
                         path: ':id', // View single employee
                         component: EmployeeComponent
                     },
                     {
                         path: ':id/delete', // Delete employee
                         component: DeleteEmployeeComponent
-                    },
-                    {
-                        path: 'add', // Add new employee (consistent path)
-                        component: AddEmployeeComponent
                     }
                 ]
             }

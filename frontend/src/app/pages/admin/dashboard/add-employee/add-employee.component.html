@@ -1,1 +1,31 @@
-<p>add-employee works!</p>
+<div class="backdrop" (click)="navigate()"></div>
+<dialog open>
+  <h2>Add Developer</h2>
+  <ion-icon name="logo-sass" class="logo"></ion-icon>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <p>
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" formControlName="name" />
+    </p>
+    <p>
+      <label for="surname">Surname</label>
+      <input type="text" id="surname" name="surname" formControlName="surname"/>
+    </p>
+    <p>
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" formControlName="email" />
+      @if(showError()) {
+        <span class="error">{{ errorMessage() }}</span>
+      }
+    </p>
+    <p>
+      <label for="password">Password</label>
+      <input type="text" id="password" name="password" formControlName="password" />
+    </p>
+
+    <div class="actions">
+      <a class="btn" routerLink="" type="button">Cancel</a>
+      <button class="btn" type="submit">Add</button>
+    </div>
+  </form>
+</dialog>

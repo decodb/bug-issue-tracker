@@ -42,4 +42,8 @@ export class DeleteEmployeeComponent implements OnInit {
         }
       })
   }
+
+  navigate() {
+    this.router.navigate(['/admin/employees'])
+  }
 }
