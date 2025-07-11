@@ -1,8 +1,8 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA, inject, signal } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
-import { Developer, DevelopersService } from '../../../../services/developer.service';
-import { AuthService } from '../../../../services/auth.service';
+import { Developer, DevelopersService } from '../../../../../services/developer.service';
+import { AuthService } from '../../../../../services/auth.service';
 
 @Component({
   selector: 'app-add-employee',

@@ -5,11 +5,16 @@ import { SignInComponent } from './pages/sign-in/sign-in.component';
 import { DashboardComponent } from './pages/admin/dashboard/dashboard.component';
 import { OverviewComponent } from './pages/admin/dashboard/overview/overview.component';
 import { authGuard } from './guards/authGuard/auth.guard';
-import { EmployeeComponent } from './pages/admin/dashboard/employee/employee.component';
-import { DeleteEmployeeComponent } from './pages/admin/dashboard/delete-employee/delete-employee.component';
-import { AddEmployeeComponent } from './pages/admin/dashboard/add-employee/add-employee.component';
+import { EmployeeComponent } from './pages/admin/dashboard/emps/employee/employee.component';
+import { DeleteEmployeeComponent } from './pages/admin/dashboard/emps/delete-employee/delete-employee.component';
+import { AddEmployeeComponent } from './pages/admin/dashboard/emps/add-employee/add-employee.component';
 import { adminGuard } from './guards/adminGuard/admin.guard';
-import { EmployeesComponent } from './pages/admin/dashboard/employees/employees.component';
+import { EmployeesComponent } from './pages/admin/dashboard/emps/employees/employees.component';
+import { ProjectsComponent } from './pages/admin/dashboard/projects/projects.component';
+import { CreateProjectComponent } from './pages/admin/dashboard/projects/create-project/create-project.component';
+import { ProjectComponent } from './pages/admin/dashboard/projects/project/project.component';
+import { UpdateProjectComponent } from './pages/admin/dashboard/projects/update-project/update-project.component';
+import { DeleteProjectComponent } from './pages/admin/dashboard/projects/delete-project/delete-project.component';
 
 export const routes: Routes = [
     {
@@ -48,6 +53,29 @@ export const routes: Routes = [
                     {
                         path: ':id/delete', // Delete employee
                         component: DeleteEmployeeComponent
+                    }
+                ]
+            },
+            {
+                path: 'projects',
+                component: ProjectsComponent,
+                canActivate: [authGuard, adminGuard],
+                children: [
+                    {
+                        path: 'create-project',
+                        component: CreateProjectComponent
+                    }, 
+                    {
+                        path: ':id',
+                        component: ProjectComponent
+                    },
+                    {
+                        path: ':id/update',
+                        component: UpdateProjectComponent
+                    },
+                    {
+                        path: ':id/delete',
+                        component: DeleteProjectComponent
                     }
                 ]
             }

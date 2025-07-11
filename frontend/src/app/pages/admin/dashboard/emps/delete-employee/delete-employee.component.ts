@@ -1,6 +1,6 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA, inject, input, OnInit, signal } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
-import { DevelopersService } from '../../../../services/developer.service';
+import { DevelopersService } from '../../../../../services/developer.service';
 
 @Component({
   selector: 'app-delete-employee',

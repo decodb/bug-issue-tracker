@@ -1,8 +1,8 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA, DestroyRef, inject, OnInit, signal } from '@angular/core';
-import { AuthService } from '../../../../services/auth.service';
+import { AuthService } from '../../../../../services/auth.service';
 import { RouterLink, RouterOutlet } from '@angular/router';
-import { DeveloperComponent } from "../../../../components/developer/developer.component";
-import { DevelopersService } from '../../../../services/developer.service';
+import { DeveloperComponent } from "../../../../../components/developer/developer.component";
+import { DevelopersService } from '../../../../../services/developer.service';
 
 @Component({
   selector: 'app-employees',
