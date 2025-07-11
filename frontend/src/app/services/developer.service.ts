@@ -18,4 +18,12 @@ export class DevelopersService {
     fetchDevelopers() {
         return this.httpClient.get<any>(this.developersUrl)
     }
+
+    fetchDeveloperById(id: string) {
+        return this.httpClient.get<any>(`http://localhost:3001/api/admin/employee/${id}`)
+    }
+
+    deleteDeveloperById(id: string) {
+        return this.httpClient.delete<any>(`http://localhost:3001/api/admin/deleteEmployee/${id}`)
+    }
 }
