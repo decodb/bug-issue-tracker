@@ -1,1 +1,12 @@
-<p>delete-project works!</p>
+<div class="backdrop" (click)="navigate()" ></div>
+<dialog open>
+  <div class="bin">
+    <ion-icon name="trash-outline"></ion-icon>
+  </div>
+  <h3>Are you sure you want this project?</h3>
+  <span>Weekly Tracker</span>
+  <div class="buttons">
+    <a routerLink="/admin/projects" class="btn cancel">Cancel</a>
+    <button class="btn delete" (click)="onDelete()">Delete</button>
+  </div>
+</dialog>

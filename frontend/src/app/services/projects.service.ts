@@ -26,4 +26,11 @@ export class ProjectService {
 
         return this.httpClient.post<any>("http://localhost:3001/api/admin/createProject", projectInfo , {headers})
     }
+
+    deleteProject(id: string) {
+        const token = localStorage.getItem('token');
+        const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+
+        return this.httpClient.delete<any>(`http://localhost:3001/api/admin/deleteProject/${id}`, {headers})
+    }
 }
