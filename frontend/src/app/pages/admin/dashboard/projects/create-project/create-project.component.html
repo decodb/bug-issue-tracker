@@ -1,1 +1,29 @@
-<p>create-project works!</p>
+<a routerLink="/admin/projects" class="backdrop"></a>
+<dialog open>
+  <h2>Create a project</h2>
+  <ion-icon name="logo-sass" class="logo"></ion-icon>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <p>
+      <label for="name">Project Name</label>
+      <input type="text" id="name" name="name" formControlName="name" />
+    </p>
+
+    <p>
+      <label for="description">Desciprtion</label>
+      <textarea id="description" rows="5" name="description" formControlName="description"></textarea>
+    </p>
+
+    <p>
+      <label for="status">Status</label>
+      <select name="status" id="status" formControlName="status">
+        <option value="running">Running</option>
+        <option value="completed">Completed</option>
+      </select>
+    </p>
+
+    <div class="actions">
+      <a routerLink="/admin/projects" class="btn cancel" type="button">Cancel</a>
+      <button class="btn" type="submit">Create</button>
+    </div>
+  </form>
+</dialog>

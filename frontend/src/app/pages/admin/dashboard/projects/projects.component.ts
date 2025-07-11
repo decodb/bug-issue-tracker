@@ -20,7 +20,6 @@ export class ProjectsComponent implements OnInit {
     this.projectsService.getProjects(this.authService.getCurrentUser().userId)
       .subscribe({
         next: ({ data }) => {
-          console.log(data)
           this.projects.set(data)
         },
         error: (error) => {

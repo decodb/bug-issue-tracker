@@ -16,7 +16,7 @@
             <span></span>
         </div>
         <div class="projects">
-            @if(projects.length > 0) {
+            @if(projects().length > 0) {
                 @for(project of projects(); track project.id) {
                     <app-project-card [data]="project"/>
                 }
