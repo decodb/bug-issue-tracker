@@ -18,4 +18,8 @@ export class IssuesService {
         return this.httpClient.post<any>(`http://localhost:3001/api/admin/project/${projectId}/createIssue`, data, {headers})
     }
 
+    getIssues() {
+        return this.httpClient.get<any>("http://localhost:3001/api/admin/issues")
+    }
+
 }

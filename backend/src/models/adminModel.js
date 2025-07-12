@@ -144,17 +144,20 @@ export const getAllIssues = async(managerId) => {
     const result = await pool.query(
         `
             SELECT 
-                i.title AS issueTitle,
-                i.description AS issueDescription,
-                i.priority AS issuePriority,
-                u.name AS assignedToName,
-                u.surname AS assignedToSurname,
-                p.name AS issueProjectName
-            FROM issues i
-            JOIN users u
-                ON i.assigned_to = u.id AND u.manager_id =$1
-            JOIN projects p
-                ON i.project_id = p.id;       
+                issues.id,
+                issues.title, 
+                issues.description, 
+                issues.priority, 
+                users.name, 
+                users.surname
+            FROM 
+                issues
+            LEFT JOIN 
+                users
+            ON 
+                users.id = issues.assigned_to
+            WHERE 
+                issues.created_by=$1;      
         `, [managerId]
     )
 

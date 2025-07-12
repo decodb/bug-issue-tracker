@@ -58,16 +58,24 @@ dialog form p textarea:hover {
     box-shadow: 0 0 15px var(--color-grey);
 }
 
-dialog form  .actions {
+dialog form .actions {
     margin-top: 1rem;
     display: flex;
     gap: 0.5rem;
-    justify-content: flex-end;
+    justify-content: space-between;
+}
+
+dialog form .actions .issue {
+    background-color: aquamarine;
 }
 
 dialog form .actions .cancel {
     background-color: transparent;
     color: var(--color-black);
+}
+
+dialog form .actions .buttons {
+    display: flex;
 }
 
 ion-icon {

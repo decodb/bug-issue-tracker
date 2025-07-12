@@ -1,0 +1,15 @@
+<div class="issue">
+    <div class="name">
+        <p class="text">{{ data().title }}</p>
+    </div>
+    <p class="text">{{ data().description }}</p>
+    @if(data().name !== null) {
+        <p>{{ data().name }} {{ data().surname }}</p>   
+    } @else {
+        <p>-</p>
+    }
+    <span class="text_box">{{ data().priority }}</span>
+    <div class="icons">
+        <a [routerLink]="[]" class="edit"><ion-icon name="eye-outline"></ion-icon></a>
+    </div>
+</div>

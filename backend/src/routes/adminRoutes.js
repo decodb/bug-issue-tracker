@@ -21,11 +21,16 @@ router.get("/projects", authMiddleware, isAdmin, getProjects);
 router.get("/project/:id", authMiddleware, isAdmin, getProject)
 router.put("/updateProject/:id", authMiddleware, isAdmin, updateProject)
 router.delete("/deleteProject/:id", authMiddleware, isAdmin, deleteProject)
+
+// not done
 router.post("/project/:pId/employee/:eId", authMiddleware, isAdmin, addEmployeeToProject)
+// get project along with it's developers
 
 // Issues endpoints
 router.post("/project/:pId/createIssue", authMiddleware, isAdmin, createNewProjectIssue)
 router.put("/update/issue/:id/", authMiddleware, isAdmin, updateProjectIssue)
 router.get("/issues", authMiddleware, isAdmin, getIssues)
+
+//get issue by id
 
 export default router

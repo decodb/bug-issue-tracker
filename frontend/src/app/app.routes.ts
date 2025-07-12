@@ -16,6 +16,8 @@ import { ProjectComponent } from './pages/admin/dashboard/projects/project/proje
 import { UpdateProjectComponent } from './pages/admin/dashboard/projects/update-project/update-project.component';
 import { DeleteProjectComponent } from './pages/admin/dashboard/projects/delete-project/delete-project.component';
 import { CreateIssueComponent } from './pages/admin/dashboard/issues/create-issue/create-issue.component';
+import { IssuesComponent } from './pages/admin/dashboard/issues/issues.component';
+import { UpdateIssueComponent } from './pages/admin/dashboard/issues/update-issue/update-issue.component';
 
 export const routes: Routes = [
     {
@@ -83,6 +85,17 @@ export const routes: Routes = [
                     {
                         path: ':id/delete',
                         component: DeleteProjectComponent
+                    }
+                ]
+            },
+            {
+                path: 'issues',
+                component: IssuesComponent,
+                canActivate: [authGuard, adminGuard],
+                children: [
+                    {
+                        path: ':id/update',
+                        component: UpdateIssueComponent
                     }
                 ]
             }

@@ -22,6 +22,11 @@ a {
     color: black;
 }
 
+button {
+    all: unset;
+    cursor: pointer;
+}
+
 .btn {
     color: white;
     background-color: black;

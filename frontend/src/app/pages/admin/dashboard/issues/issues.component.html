@@ -1,1 +1,26 @@
-<p>issues works!</p>
+<section>
+    <div class="header">
+        <div class="left">
+            <h3>Issues</h3>
+            <span>Manage your issues from here</span>
+        </div>
+    </div>
+    <div class="main">
+        <div class="headers">
+            <span>Issue title<ion-icon name="arrow-down-outline"></ion-icon></span>
+            <span>Description</span>
+            <span>Assigned_to</span>
+            <span>Priority</span>
+            <span></span>
+        </div>
+        <div class="projects">
+            @if(issues().length > 0) {
+                @for(issue of issues(); track issue.id) {
+                    <app-issue [data]="issue"/>
+                }
+            }@else {
+                <p class="fallback">You don't have any issues. Create one.</p>
+            }
+        </div>
+    </div>
+</section>
