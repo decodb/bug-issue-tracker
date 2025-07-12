@@ -20,11 +20,26 @@ export class ProjectService {
         return this.httpClient.get<any>(this.projectsUrl, {headers});
     }
 
+    getProject(id: string | undefined) {
+        const token = localStorage.getItem('token');
+        const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+
+        return this.httpClient.get<any>(`http://localhost:3001/api/admin/project/${id}`, {headers})
+    }
+
     createProject(projectInfo : Project) {
         const token = localStorage.getItem('token');
         const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
 
         return this.httpClient.post<any>("http://localhost:3001/api/admin/createProject", projectInfo , {headers})
+    }
+
+    updateProject(id : string | undefined, projectInfo : Project) {
+        const token = localStorage.getItem('token');
+        const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+
+        return this.httpClient.put<any>(`http://localhost:3001/api/admin/updateProject/${id}`, projectInfo, {headers}) 
+
     }
 
     deleteProject(id: string) {
