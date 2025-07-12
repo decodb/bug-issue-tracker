@@ -21,7 +21,6 @@ router.get("/projects", authMiddleware, isAdmin, getProjects);
 router.get("/project/:id", authMiddleware, isAdmin, getProject)
 router.put("/updateProject/:id", authMiddleware, isAdmin, updateProject)
 router.delete("/deleteProject/:id", authMiddleware, isAdmin, deleteProject)
-
 router.post("/project/:pId/employee/:eId", authMiddleware, isAdmin, addEmployeeToProject)
 
 // Issues endpoints

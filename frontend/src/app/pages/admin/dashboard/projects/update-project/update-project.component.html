@@ -23,8 +23,10 @@
     </p>
 
     <div class="actions">
+      <a [routerLink]="['createIssue']" class="btn">+ Issue</a>
       <a routerLink="/admin/projects" class="btn cancel" type="button">Cancel</a>
       <button class="btn" type="submit">Update</button>
     </div>
   </form>
 </dialog>
+<router-outlet />

@@ -1,0 +1,31 @@
+<a [routerLink]="['/admin/projects/', project().id, 'update']" class="backdrop"></a>
+<dialog open>
+  <h2>Create an issue</h2>
+  <span>{{ project().name }}</span>
+  <ion-icon name="logo-sass" class="logo"></ion-icon>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <p>
+      <label for="name">Bug name</label>
+      <input type="text" id="name" name="name" formControlName="name" />
+    </p>
+
+    <p>
+      <label for="description">Bug description</label>
+      <textarea id="description" rows="5" name="description" formControlName="description"></textarea>
+    </p>
+
+    <p>
+      <label for="status">Priority</label>
+      <select name="status" id="status" formControlName="priority">
+        <option value="LOW">Low</option>
+        <option value="MID">Mid</option>
+        <option value="HIGH">High</option>
+      </select>
+    </p>
+
+    <div class="actions">
+      <a [routerLink]="['/admin/projects/', project().id, 'update']" type="button">Cancel</a>
+      <button class="btn" type="submit">Create</button>
+    </div>
+  </form>
+</dialog>

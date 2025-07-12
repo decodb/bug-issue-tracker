@@ -1,16 +1,18 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA, input, OnInit, signal } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Router, RouterLink, RouterOutlet } from '@angular/router';
-import { Project, ProjectService } from '../../../../../services/projects.service';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { ProjectService } from '../../../../../services/projects.service';
+import { Issue, IssuesService } from '../../../../../services/issues.service';
+
 
 @Component({
-  selector: 'app-update-project',
-  imports: [ReactiveFormsModule, RouterLink, RouterOutlet],
+  selector: 'app-create-issue',
+  imports: [ReactiveFormsModule, RouterLink],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  templateUrl: './update-project.component.html',
-  styleUrl: './update-project.component.css'
+  templateUrl: './create-issue.component.html',
+  styleUrl: './create-issue.component.css'
 })
-export class UpdateProjectComponent implements OnInit {
+export class CreateIssueComponent implements OnInit {
   id = input<string>()
   project = signal<any>({})
 
@@ -21,24 +23,20 @@ export class UpdateProjectComponent implements OnInit {
     description: new FormControl('', {
       validators: [Validators.required]
     }),
-    status: new FormControl('', {
+    priority: new FormControl('', {
       validators: [Validators.required]
     })
   })
 
-  constructor(private router: Router, private projectsService: ProjectService) {}
+  constructor(private router: Router, private projectsService: ProjectService,
+    private route : ActivatedRoute, private issuesService : IssuesService
+  ) {}
 
   ngOnInit(): void {
     this.projectsService.getProject(this.id())
       .subscribe({
         next: ({ data }) => {
           this.project.set(data);
-
-          this.form.patchValue({
-            name: data.name,
-            description: data.description,
-            status: data.status
-          });
         },
         error: (error) => {
           console.log(error)
@@ -49,13 +47,13 @@ export class UpdateProjectComponent implements OnInit {
   onSubmit() {
     if(this.form.invalid) { return }
 
-    const projectInfo : Project = {
-      name : this.form.controls.name.value,
+    const data : Issue = {
+      title : this.form.controls.name.value,
       description : this.form.controls.description.value,
-      status: this.form.controls.status.value
+      priority: this.form.controls.priority.value
     }
 
-    this.projectsService.updateProject(this.id(), projectInfo)
+    this.issuesService.createIssue(data, this.id())
       .subscribe({
         next: (response) => {
           console.log(response)

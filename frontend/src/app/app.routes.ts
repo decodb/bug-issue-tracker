@@ -15,6 +15,7 @@ import { CreateProjectComponent } from './pages/admin/dashboard/projects/create-
 import { ProjectComponent } from './pages/admin/dashboard/projects/project/project.component';
 import { UpdateProjectComponent } from './pages/admin/dashboard/projects/update-project/update-project.component';
 import { DeleteProjectComponent } from './pages/admin/dashboard/projects/delete-project/delete-project.component';
+import { CreateIssueComponent } from './pages/admin/dashboard/issues/create-issue/create-issue.component';
 
 export const routes: Routes = [
     {
@@ -71,7 +72,13 @@ export const routes: Routes = [
                     },
                     {
                         path: ':id/update',
-                        component: UpdateProjectComponent
+                        component: UpdateProjectComponent,
+                        children: [
+                            {
+                                path: 'createIssue',
+                                component: CreateIssueComponent
+                            }
+                        ]
                     },
                     {
                         path: ':id/delete',
