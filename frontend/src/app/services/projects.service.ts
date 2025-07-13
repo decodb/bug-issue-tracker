@@ -55,4 +55,11 @@ export class ProjectService {
 
         return this.httpClient.get<any>(`http://localhost:3001/api/admin/project/${id}/devs`)
     }
+
+    addDevToProject(id: string | undefined, devId: string | undefined) {
+        const token = localStorage.getItem('token');
+        const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+
+        return this.httpClient.post<any>(`http://localhost:3001/api/admin/project/${id}/employee/${devId}`, {headers})
+    }
 }

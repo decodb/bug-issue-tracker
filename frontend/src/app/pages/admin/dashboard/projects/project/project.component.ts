@@ -1,11 +1,11 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA, input, OnInit, signal } from '@angular/core';
 import { ProjectService } from '../../../../../services/projects.service';
-import { RouterLink } from '@angular/router';
+import { RouterLink, RouterOutlet } from '@angular/router';
 import { ProjectDevComponent } from "../../../../../components/project-dev/project-dev.component";
 
 @Component({
   selector: 'app-project',
-  imports: [RouterLink, ProjectDevComponent],
+  imports: [RouterLink, ProjectDevComponent, RouterOutlet],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './project.component.html',
   styleUrl: './project.component.css'

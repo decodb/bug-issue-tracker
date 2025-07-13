@@ -1,0 +1,15 @@
+<a routerLink="/admin/projects" class="backdrop" ></a>
+<dialog open>
+  <div class="bin">
+    <ion-icon name="person-add-outline"></ion-icon>
+  </div>
+  <h3>Are you sure add this developer?</h3>
+  <span>{{ dev().name }} {{ dev().surname }}</span>
+  @if(showMessage()) {
+    <span class="successMessage">{{ successMessage() }}</span>
+  }
+  <div class="buttons">
+    <a routerLink="/" class="btn cancel">Cancel</a>
+    <button class="btn" (click)="add()">Add</button>
+  </div>
+</dialog>

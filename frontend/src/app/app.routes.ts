@@ -5,7 +5,6 @@ import { SignInComponent } from './pages/sign-in/sign-in.component';
 import { DashboardComponent } from './pages/admin/dashboard/dashboard.component';
 import { OverviewComponent } from './pages/admin/dashboard/overview/overview.component';
 import { authGuard } from './guards/authGuard/auth.guard';
-import { EmployeeComponent } from './pages/admin/dashboard/emps/employee/employee.component';
 import { DeleteEmployeeComponent } from './pages/admin/dashboard/emps/delete-employee/delete-employee.component';
 import { AddEmployeeComponent } from './pages/admin/dashboard/emps/add-employee/add-employee.component';
 import { adminGuard } from './guards/adminGuard/admin.guard';
@@ -18,6 +17,8 @@ import { DeleteProjectComponent } from './pages/admin/dashboard/projects/delete-
 import { CreateIssueComponent } from './pages/admin/dashboard/issues/create-issue/create-issue.component';
 import { IssuesComponent } from './pages/admin/dashboard/issues/issues.component';
 import { UpdateIssueComponent } from './pages/admin/dashboard/issues/update-issue/update-issue.component';
+import { AddDeveloperComponent } from './pages/admin/dashboard/projects/add-developer/add-developer.component';
+import { ConfirmAddDevComponent } from './pages/admin/dashboard/projects/confirm-add-dev/confirm-add-dev.component';
 
 export const routes: Routes = [
     {
@@ -50,10 +51,6 @@ export const routes: Routes = [
                         component: AddEmployeeComponent
                     },
                     {
-                        path: ':id', // View single employee
-                        component: EmployeeComponent
-                    },
-                    {
                         path: ':id/delete', // Delete employee
                         component: DeleteEmployeeComponent
                     }
@@ -70,7 +67,19 @@ export const routes: Routes = [
                     }, 
                     {
                         path: ':id',
-                        component: ProjectComponent
+                        component: ProjectComponent,
+                        children: [
+                            {
+                                path: 'devs',
+                                component: AddDeveloperComponent,
+                                children: [
+                                    {
+                                        path: ':devId',
+                                        component: ConfirmAddDevComponent
+                                    }
+                                ]
+                            }
+                        ]
                     },
                     {
                         path: ':id/update',

@@ -1,0 +1,9 @@
+<a class="developer">
+    <div class="right">
+        <h3>{{ employee().name }} {{ employee().surname }}</h3>
+        <span>{{ employee().email }}</span>
+    </div>
+    <div class="right">
+        <a [routerLink]="['/admin/projects/', id(), 'devs', employee().id]" class="btn" type="submit">+</a>
+    </div>
+</a >

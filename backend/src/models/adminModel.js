@@ -119,7 +119,7 @@ export const getEmployeeByForProjectById = async(pId, eId) => {
 export const getProjectAlongWithDevs = async(pId) => {
     const result = await pool.query(
         `
-            SELECT users.name AS devName, users.surname as devSurname, projects.name AS projectName, project_employee.start_date
+            SELECT users.id, users.name AS devName, users.surname as devSurname, projects.name AS projectName, project_employee.start_date
             FROM users
             JOIN 
                 project_employee

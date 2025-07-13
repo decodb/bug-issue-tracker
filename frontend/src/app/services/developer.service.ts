@@ -27,7 +27,7 @@ export class DevelopersService {
         return this.httpClient.get<any>(this.developersUrl)
     }
 
-    fetchDeveloperById(id: string) {
+    fetchDeveloperById(id: string | undefined) {
         return this.httpClient.get<any>(`http://localhost:3001/api/admin/employee/${id}`)
     }
 

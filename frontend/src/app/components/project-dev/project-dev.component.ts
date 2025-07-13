@@ -1,4 +1,4 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, input } from '@angular/core';
 
 @Component({
   selector: 'app-project-dev',
@@ -8,5 +8,5 @@ import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
   styleUrl: './project-dev.component.css'
 })
 export class ProjectDevComponent {
-
+  dev = input.required<any>()
 }
