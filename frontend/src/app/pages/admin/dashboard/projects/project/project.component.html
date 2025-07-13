@@ -1,1 +1,19 @@
-<p>project works!</p>
+<a routerLink="/admin/projects" class="backdrop"></a>
+<dialog open>
+  <h2>{{ project().name }}</h2>
+  <span>Developers</span>
+  <ion-icon name="logo-sass" class="logo"></ion-icon>
+  <div class="developers" [class.height]="devsLength">
+    @if (devsLength) {
+        <p>There are no devs for this projects. Please add them</p>
+    } @else {
+        @for(dev of devs(); track dev.id) {
+            <app-project-dev />
+        }
+    }
+  </div>
+  <div class="actions">
+    <a routerLink="/admin/projects" class="btn cancel" type="button">Cancel</a>
+    <button class="btn" type="submit">Add Developer</button>
+    </div>
+</dialog>

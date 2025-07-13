@@ -6,6 +6,7 @@
     <p class="text">{{ data().description }}</p>
     <span class="text_box">{{ data().status }}</span>
     <div class="icons">
+        <a [routerLink]="['/admin/projects', data().id]"><ion-icon name="people-outline"></ion-icon></a>
         <a [routerLink]="['/admin/projects/', data().id, 'update']" class="edit"><ion-icon name="create-outline"></ion-icon></a>
         <a [routerLink]="['/admin/projects', data().id, 'delete']" class="delete"><ion-icon name="trash-outline"></ion-icon></a>
     </div>

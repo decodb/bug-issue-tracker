@@ -1,0 +1,14 @@
+.developer {
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--background-grey);
+    padding: 0.5rem 1rem;
+}
+
+.developer h3 {
+    font-weight: 500;
+}
+
+.developer span {
+    color: var(--color-slate-grey)
+}
