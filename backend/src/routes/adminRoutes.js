@@ -1,5 +1,5 @@
 import express from "express"
-import { addEmployee, addEmployeeToProject, addNewProject, createNewProjectIssue, deleteEmployee, deleteProject, getEmployee, getEmployees, getIssues, getOverview, getProject, getProjects, updateProject, updateProjectIssue } from "../controllers/adminController.js"
+import { addEmployee, addEmployeeToProject, addNewProject, createNewProjectIssue, deleteEmployee, deleteProject, getEmployee, getEmployees, getIssues, getOverview, getProject, getProjects, projectWithDevs, updateProject, updateProjectIssue } from "../controllers/adminController.js"
 import { authMiddleware } from "../middlewares/authMiddleware.js"
 import { isAdmin } from "../middlewares/adminMiddleware.js"
 import { getAllIssues } from "../models/adminModel.js"
@@ -25,6 +25,7 @@ router.delete("/deleteProject/:id", authMiddleware, isAdmin, deleteProject)
 // not done
 router.post("/project/:pId/employee/:eId", authMiddleware, isAdmin, addEmployeeToProject)
 // get project along with it's developers
+router.get("/project/:pId/devs", authMiddleware, isAdmin, projectWithDevs)
 
 // Issues endpoints
 router.post("/project/:pId/createIssue", authMiddleware, isAdmin, createNewProjectIssue)

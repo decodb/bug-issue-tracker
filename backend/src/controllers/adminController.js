@@ -1,4 +1,4 @@
-import { addEmployeeByIdToProject, addProject, createProjectIssue, deleteEmployeeById, deleteProjectById, getAllEmployees, getAllIssues, getAllProjects, getEmployeeByForProjectById, getEmployeeById, getProjectById, updateProjectById, updateProjectByIdIssue } from "../models/adminModel.js";
+import { addEmployeeByIdToProject, addProject, createProjectIssue, deleteEmployeeById, deleteProjectById, getAllEmployees, getAllIssues, getAllProjects, getEmployeeByForProjectById, getEmployeeById, getProjectAlongWithDevs, getProjectById, updateProjectById, updateProjectByIdIssue } from "../models/adminModel.js";
 import { getUser, insertUser } from "../models/usersModel.js";
 import { sendBadRequest } from "../utils/4xx/errorResponse.js";
 import { sendConflictResponse } from "../utils/4xx/conflictResponse.js";
@@ -149,6 +149,19 @@ export const addEmployeeToProject = async(req, res, next) => {
         const addEmp = await addEmployeeByIdToProject(pId, eId);
         sendOk(req, res, "An employee succcessfully added to the project. ", addEmp)
     } catch (error) {
+        next(error)
+    }
+}
+
+export const projectWithDevs = async(req, res, next) => {
+    const pId = req.params.pId;
+
+    try {
+        const projectDevs = await getProjectAlongWithDevs(pId);
+        if(projectDevs.length < 1) return sendBadRequest(req, res, 'There no developers for this project. Please add them. ');
+
+        sendOk(req, res, 'Developers successfully fetched. ', projectDevs)
+    } catch (error){
         next(error)
     }
 }

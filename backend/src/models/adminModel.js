@@ -116,6 +116,27 @@ export const getEmployeeByForProjectById = async(pId, eId) => {
     return result.rows
 }
 
+export const getProjectAlongWithDevs = async(pId) => {
+    const result = await pool.query(
+        `
+            SELECT users.name AS devName, users.surname as devSurname, projects.name AS projectName, project_employee.start_date
+            FROM users
+            JOIN 
+                project_employee
+            ON 
+                users.id = project_employee.user_id
+            JOIN 
+                projects
+            ON 
+                projects.id = project_employee.project_id
+            WHERE
+                projects.id = $1   
+        `, [pId]
+    )
+
+    return result.rows
+}
+
 // Issues endpoints
 export const createProjectIssue = async(name, description, priority, eId, pId) => {
     const result = await pool.query(
