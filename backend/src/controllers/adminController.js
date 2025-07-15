@@ -4,6 +4,7 @@ import { sendBadRequest } from "../utils/4xx/errorResponse.js";
 import { sendConflictResponse } from "../utils/4xx/conflictResponse.js";
 import { sendOk } from "../utils/2xx/successResponse.js";
 import { sendNotFound } from "../utils/4xx/notFound.js";
+import bcrypt from "bcrypt"
 
 export const getOverview = async(req, res) => {
     res.status(200).json({
@@ -59,7 +60,10 @@ export const addEmployee = async (req, res, next) => {
         const employee = await getUser(email);
         if (employee) return sendConflictResponse(req, res, "You have already added this employee. ");
 
-        const newEmployee = await insertUser(name, surname, email, password, "employee", userId);
+        const salt = await bcrypt.genSalt(10);
+        const hashedPassowrd = await bcrypt.hash(password, salt)
+
+        const newEmployee = await insertUser(name, surname, email, hashedPassowrd, "employee", userId);
         if (!newEmployee) return sendBadRequest(req, res, "Failure adding a new employee. Please try again. ");
 
         sendOk(req, res, newEmployee);

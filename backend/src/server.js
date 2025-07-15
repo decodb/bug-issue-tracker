@@ -5,6 +5,7 @@ import pool from './config/db.js';
 import { errorHandler } from "./middlewares/errorHandler.js";
 import authRoutes from "./routes/authRoutes.js"
 import adminRoutes from "./routes/adminRoutes.js"
+import developerRoutes from "./routes/developerRoutes.js"
 import bodyParser from "body-parser";
 
 dotenv.config()
@@ -18,8 +19,9 @@ app.use(express.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 
 // Routes
-app.use("/api/", authRoutes)
-app.use("/api/admin/", adminRoutes)
+app.use("/api/", authRoutes) // authentication and authorization routes
+app.use("/api/admin/", adminRoutes) // admin routes
+app.use("/api/developer/", developerRoutes)
 
 // Test the db connection
 async function testDatabaseConnection() {
