@@ -89,3 +89,13 @@ section .body .aside img {
 .btn {
     width: max-content;
 }
+
+@media (max-width: 767px) {
+    section .header {
+        padding: 0.5rem 1rem;
+    }
+
+    section .body {
+        grid-template-columns: 1fr;
+    }
+}

@@ -1,8 +1,11 @@
 <section>
-    <div class="sidebar">
+    <div class="sidebar" [class.open]="menuOpen()" (click)="onToggleMenu()">
         <aside>
             <div class="header">
                 <ion-icon name="logo-sass" class="logo"></ion-icon>
+                <div class="close">
+                    <ion-icon name="close-outline"></ion-icon>
+                </div>
             </div>
             <div class="links">
                 <div class="top">
@@ -49,9 +52,14 @@
     </div>
     <main>
         <div class="header">
-            <div class="search-bar">
-                <ion-icon name="search-outline"></ion-icon>
-                <input id="search" type="text" placeholder="search here">
+            <div class="left">
+                <div class="menu" (click)="onToggleMenu()">
+                    <ion-icon name="menu-outline"></ion-icon>
+                </div>
+                <div class="search-bar">
+                    <ion-icon name="search-outline"></ion-icon>
+                    <input id="search" type="text" placeholder="search here">
+                </div>
             </div>
             <div class="user">
                 <span>{{ currentUser.name }}</span>

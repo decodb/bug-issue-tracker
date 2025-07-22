@@ -15,12 +15,24 @@ section aside {
 
 section aside .header {
     display: flex;
+    justify-content: space-between;
+    align-items: center;
     border-bottom: 1px solid var(--color-grey);
     padding: 0.5rem 1.5rem;
 }
 
 section aside .header ion-icon {
     color: aquamarine;
+}
+
+section aside .header .close {
+    cursor: pointer;
+    display: none;
+}
+
+section aside .header .close ion-icon {
+    color: black;
+    font-size: 1.9rem;
 }
 
 section aside .header ion-icon {
@@ -91,6 +103,23 @@ section main .header {
     padding: 0.5rem 1.5rem;
 }
 
+section main .header .left {
+    display: flex;
+    align-items: center;
+}
+
+section main .header .left .menu {
+    cursor: pointer;
+    display: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+section main .header .left .menu ion-icon {
+    font-size: 1.5rem;
+}
+
 section main .header .search-bar {
     border: 1px solid var(--color-grey);
     border-radius: 5px;
@@ -100,7 +129,6 @@ section main .header .search-bar {
     padding: 0.7rem;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
-
 
 section main .header .search-bar input {
     border: none; 
@@ -123,4 +151,47 @@ section main .header .user {
 
 section main .header .user:hover {
     background-color: var(--background-grey);
+}
+
+@media (max-width: 767px) {
+    section {
+        grid-template-columns: 1fr;
+    }
+
+    section .sidebar {
+        background-color: rgba(0, 0, 0, 0.9);
+        position: fixed;
+        top: 0;
+        left: -600px;
+        width: 100%;
+        height: 100%;
+        z-index: 1000;
+        transition: all 0.3s ease-in-out;
+    }
+
+    section .sidebar.open {
+        left: 0;
+    }
+
+    section .sidebar aside {
+        width: 75%;
+        height: 100%;
+        position: sticky;
+    }
+
+    section .sidebar aside .header .close {
+        display: block;
+    }
+
+    section main .header .left .menu {
+        display: block;
+    } 
+
+    section main .header .left .menu ion-icon {
+        font-size: 2rem;
+    }
+
+    section main .header .search-bar {
+        display: none;
+    }
 }

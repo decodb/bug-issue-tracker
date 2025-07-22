@@ -1,4 +1,4 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, inject } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, inject, signal } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { AuthService } from '../../../services/auth.service';
 
@@ -11,8 +11,13 @@ import { AuthService } from '../../../services/auth.service';
 })
 export class DashboardComponent {
   private authService = inject(AuthService);
+  menuOpen = signal<boolean>(false);
 
   get currentUser() {
     return this.authService.getCurrentUser();
+  }
+
+  onToggleMenu() {
+    this.menuOpen.set(!this.menuOpen())
   }
 }
