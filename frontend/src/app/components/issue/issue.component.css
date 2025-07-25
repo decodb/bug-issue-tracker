@@ -45,3 +45,21 @@
     font-size: 0.9rem;
     color: var(--color-black);
 }
+
+.dev {
+    text-align: center;
+}
+
+@media (max-width: 767px) {
+    .issue {
+        grid-template-columns: 1.5fr 1.5fr 1fr 0.5fr;
+    }
+
+    .text.desc {
+        display: none;
+    }
+
+    p.text {
+        font-size: 0.55rem;
+    }
+}

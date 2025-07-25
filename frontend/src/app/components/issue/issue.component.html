@@ -2,11 +2,11 @@
     <div class="name">
         <p class="text">{{ data().title }}</p>
     </div>
-    <p class="text">{{ data().description }}</p>
+    <p class="text desc">{{ data().description }}</p>
     @if(data().name !== null) {
-        <p>{{ data().name }} {{ data().surname }}</p>   
+        <p class="dev">{{ data().name }} {{ data().surname }}</p>   
     } @else {
-        <p>-</p>
+        <p class="dev">-</p>
     }
     <span class="text_box">{{ data().priority }}</span>
     <div class="icons">

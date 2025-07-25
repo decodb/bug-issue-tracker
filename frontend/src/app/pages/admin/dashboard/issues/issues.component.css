@@ -34,3 +34,18 @@ section .projects .fallback {
     text-align: center;
     padding: 1rem 0;
 }
+
+@media (max-width: 767px) {
+    section {
+        padding: 1rem 0.75rem;
+    }
+
+
+    section .main .headers {
+        grid-template-columns: 1.5fr 1.5fr 1fr 0.5fr;
+    }
+
+    section .main .headers span:nth-child(2) {
+        display: none;
+    }
+}
