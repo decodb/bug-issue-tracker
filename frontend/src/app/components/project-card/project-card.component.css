@@ -49,3 +49,21 @@
     font-size: 0.9rem;
     color: var(--color-black);
 }
+
+@media (max-width: 767px) {
+    .project {
+        grid-template-columns: 4fr 1fr 1fr;
+    }
+
+    .project .text.desc {
+        display: none;
+    }
+
+    .project .icons {
+        display: flex;
+        gap: 0;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-end;
+    }
+}

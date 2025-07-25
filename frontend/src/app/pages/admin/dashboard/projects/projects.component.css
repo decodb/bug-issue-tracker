@@ -34,3 +34,31 @@ section .projects .fallback {
     text-align: center;
     padding: 1rem 0;
 }
+
+@media (max-width: 767px) {
+    section .header .left h3 {
+        font-size: 0.95rem;
+        font-weight: 600;
+    }
+
+    section .header .left span {
+        font-size: 0.85rem;
+        color: var(--color-slate-grey);
+    }
+
+    section .header .right .btn {
+        width: max-content;
+        padding: 0.5rem;
+    }
+
+    section .main .headers {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr;
+        margin-bottom: 0.5rem;
+        padding: 0rem 1rem;
+    }
+
+    section .main .headers .description {
+        display: none;
+    }
+}

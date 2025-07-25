@@ -98,4 +98,15 @@ section .body .aside img {
     section .body {
         grid-template-columns: 1fr;
     }
+
+    section .body .aside {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    section .body .aside img {
+        position: relative;
+    }
 }

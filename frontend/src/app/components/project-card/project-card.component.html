@@ -3,7 +3,7 @@
         <p class="text">{{ data().name }}</p>
         <span>{{ data().created_at }}</span>
     </div>
-    <p class="text">{{ data().description }}</p>
+    <p class="text desc">{{ data().description }}</p>
     <span class="text_box">{{ data().status }}</span>
     <div class="icons">
         <a [routerLink]="['/admin/projects', data().id]"><ion-icon name="people-outline"></ion-icon></a>
