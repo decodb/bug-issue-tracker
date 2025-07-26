@@ -127,3 +127,21 @@ section .right form .field a {
 .left {
     background-color: aquamarine;
 }
+
+@media (max-width: 767px) {
+    section {
+        display: grid;
+        grid-template-columns: 1fr;
+        height: 100vh;
+        position: relative;
+    }
+
+    section .left {
+        display: none;
+    }
+
+    section .right {
+        padding: 0rem 1rem;
+        height: 100vh;
+    }
+}

@@ -82,6 +82,7 @@ form .names .input_field {
     display: flex;
     flex-direction: column;
     gap: 0.35rem;
+    width: 100%;
 }
 
 form .names .input_field label,
@@ -175,4 +176,29 @@ form .input_field .input input {
   to {
     transform: rotate(360deg);
   }
+}
+
+@media (max-width: 767px) {
+    .container {
+        grid-template-columns: 1fr;
+        width: 100%;
+    }
+
+    .container .left {
+        display: none;
+    }
+
+    .container .right {
+        width: 100%;
+        padding: 2rem 1rem;
+    }
+
+    form {
+        width: 100%;
+    }
+
+    form .names {
+        flex-direction: column;
+        width: 100%;
+    }
 }
