@@ -1,0 +1,11 @@
+<div class="backdrop" (click)="navigate()" ></div>
+<dialog open>
+  <div class="bin">
+    <ion-icon name="trash-outline"></ion-icon>
+  </div>
+  <h3>Are you sure you want to logout?</h3>
+  <div class="buttons">
+    <a routerLink="/admin/projects" class="btn cancel">Cancel</a>
+    <button class="btn delete" (click)="onLogout()">Yes</button>
+  </div>
+</dialog>

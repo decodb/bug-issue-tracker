@@ -58,7 +58,7 @@ section aside .links .bottom {
     flex-direction: column;
     gap: 0.25rem;
     padding: 1rem 0;
-    padding: 0.5rem 1.5rem
+    padding: 0.5rem 1.5rem;
 }
 
 section aside .links .top a,
@@ -151,6 +151,10 @@ section main .header .user {
 
 section main .header .user:hover {
     background-color: var(--background-grey);
+}
+
+section main .header .left .menu {
+    display: none;
 }
 
 @media (max-width: 767px) {

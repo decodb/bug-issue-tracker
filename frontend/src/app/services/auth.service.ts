@@ -1,5 +1,5 @@
 import { HttpClient } from "@angular/common/http";
-import { Injectable } from "@angular/core";
+import { inject, Injectable } from "@angular/core";
 import { Router } from "@angular/router";
 import { jwtDecode } from "jwt-decode";
 
@@ -56,4 +56,9 @@ export class AuthService {
         }
         return token;
     }   
+
+    logout() : void {
+        localStorage.removeItem('token');
+        this.router.navigate(["/sign-in"]);
+    }
 }

@@ -19,6 +19,7 @@ import { IssuesComponent } from './pages/admin/dashboard/issues/issues.component
 import { UpdateIssueComponent } from './pages/admin/dashboard/issues/update-issue/update-issue.component';
 import { AddDeveloperComponent } from './pages/admin/dashboard/projects/add-developer/add-developer.component';
 import { ConfirmAddDevComponent } from './pages/admin/dashboard/projects/confirm-add-dev/confirm-add-dev.component';
+import { LogoutComponent } from './pages/shared/logout/logout.component';
 
 export const routes: Routes = [
     {
@@ -107,6 +108,10 @@ export const routes: Routes = [
                         component: UpdateIssueComponent
                     }
                 ]
+            },
+            {
+                path: 'logout',
+                component: LogoutComponent
             }
         ]
     }
